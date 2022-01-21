@@ -13,7 +13,6 @@ Mock.setup({
   timeout: "200-600",
 });
 
-console.log(mocks);
 
 mocks.forEach((item) => {
   Mock.mock(new RegExp(item.url), item.type, item.response);

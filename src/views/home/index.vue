@@ -9,7 +9,7 @@ import Cookies from "@plugins/cookie";
 
 const store = useStore();
 const {t} = useI18n()
-console.log(useI18n())
+
 const language = ref("")
 const echartsOptions = reactive({
   xAxis: {
