@@ -1,42 +1,42 @@
 <script setup>
 // @ is an alias to /src
-import {computed, onMounted, ref, reactive} from "vue";
-import {useStore} from "vuex";
-import {useI18n} from 'vue-i18n'
+import { computed, onMounted, reactive, ref } from "vue";
+import { useStore } from "vuex";
+import { useI18n } from "vue-i18n";
 import * as echarts from "echarts";
-import {getUserInfoApi} from "../../api";
+import { getUserInfoApi } from "../../api";
 import Cookies from "@plugins/cookie";
 
 const store = useStore();
-const {t} = useI18n()
+const { t } = useI18n();
 
-const language = ref("")
+const language = ref("");
 const echartsOptions = reactive({
   xAxis: {
     type: "category",
-    data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
   },
   yAxis: {
-    type: "value",
+    type: "value"
   },
   series: [
     {
       data: [820, 932, 901, 934, 1290, 1330, 1320],
-      type: "line",
-    },
-  ],
+      type: "line"
+    }
+  ]
 });
 
 const userInfo = computed(() => store.state.user.userInfo);
 
-const initEcharts = function () {
-  const dom = document.getElementById("echars")
+const initEcharts = function() {
+  const dom = document.getElementById("echars");
   const myChart = echarts.init(dom);
   myChart.setOption(echartsOptions, true);
 };
-const languageChange = function (e) {
-  Cookies.set("language",e)
-}
+const languageChange = function(e) {
+  Cookies.set("language", e);
+};
 // 使用 action
 const getUserInfo = () => store.dispatch("user/getUserInfo");
 
@@ -44,7 +44,7 @@ onMounted(() => {
   initEcharts();
   getUserInfoApi().then((res) => {
     // 使用 mutation
-    store.commit("user/SET_USERINFO", res.data.result)
+    store.commit("user/SET_USERINFO", res.data.result);
   });
 });
 
@@ -58,7 +58,7 @@ onMounted(() => {
       <van-radio name="zh-CN">中文</van-radio>
       <van-radio name="en-US">English</van-radio>
     </van-radio-group>
-    {{t('global.confirm')}}
+    {{ t("global.confirm") }}
     <div>
       用户:{{ userInfo.name }}
     </div>

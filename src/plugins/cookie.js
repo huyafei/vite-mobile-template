@@ -6,7 +6,7 @@
  * @update: 2021/10/18 15:04
  */
 import Cookies from "js-cookie";
-import {version} from "../../package.json";
+import { version } from "../../package.json";
 
 const prefix = `__${version}__`;
 
@@ -16,7 +16,7 @@ export default {
   },
   set(name, value, options) {
     if (typeof value === "object") {
-      value = JSON.stringify(value)
+      value = JSON.stringify(value);
     }
     Cookies.set(prefix + name, value, options);
   },
@@ -24,7 +24,7 @@ export default {
     Cookies.remove(prefix + name, options);
   },
   getJSON(name) {
-    const value = Cookies.get(prefix + name)
+    const value = Cookies.get(prefix + name);
     return value ? JSON.parse(value) : value;
   }
 };

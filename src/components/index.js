@@ -7,4 +7,4 @@
 import VenTabbar from "./VenTabbar.vue";
 import VenNavbar from "./VenNavbar.vue";
 
-export {VenNavbar, VenTabbar};
+export { VenNavbar, VenTabbar };

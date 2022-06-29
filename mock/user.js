@@ -8,12 +8,12 @@ const userInfo = {
   name: "huyafei",
 };
 const getUserInfoSuccess = {
-  status: 200,
+  code: 200,
   message: "success",
   result: userInfo,
 };
 const getUserInfoError = {
-  status: 99999,
+  code: 99999,
   message: "身份过期",
 };
 const userApi = [
@@ -26,7 +26,7 @@ const userApi = [
     url: "/user/userLogin",
     type: "post",
     response: {
-      status: 200,
+      code: 200,
       message: "success",
       result: {
         token: "token123",

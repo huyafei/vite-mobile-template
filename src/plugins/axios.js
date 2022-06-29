@@ -31,23 +31,31 @@ axios.interceptors.response.use(
   function (response) {
     // 对响应数据做点什么
     const res = response.data;
-    if (res.status === 99999) {
-      Toast.fail("请登录");
-      router.push({
-        name: "Login",
-        query: {
-          redirect: router.currentRoute.value.fullPath,
-        },
-      });
-      return Promise.reject("error");
+    if (res.code === 99999) {
+      let msg = "身份过期，请从新登录"
+      Toast.fail(msg);
+      setTimeout(() => {
+        router.push({
+          name: "Login",
+          query: {
+            redirect: router.currentRoute.value.fullPath
+          }
+        });
+      }, 1500);
+      return Promise.reject(msg);
     }
     return response;
   },
   function (error) {
     // 对响应错误做点什么
+    console.log("err" + error);
+    let msg = "服务器响应错误";
+    if(error.message.includes('timeout')){   // 判断请求异常信息中是否含有超时timeout字符串
+      msg = "服务器请求超时";
+    }
     Dialog.alert({
-      title: "警告",
-      message: "登录连接超时",
+      title: "提示",
+      message: msg
     });
     return Promise.reject(error);
   }
