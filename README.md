@@ -1,7 +1,26 @@
-# Vue 3 + Vite
+# vite-mobile-template
+该模版是作为从[vensst-cli](https://huyafei.github.io/yfhu-blog/cli/)中下载的模板，在 `package.json` 中设置了模板变量，
+所以如果你直接clone代码后需要将其删除，或者使用 [vensst-cli](https://huyafei.github.io/yfhu-blog/cli/) 脚手架下载模版。
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Project setup
+```
+npm install
+```
 
-## Recommended IDE Setup
+### Compiles and hot-reloads for development
+```
+npm serve
+```
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+### Compiles and minifies for production
+```
+npm build
+```
+
+### Lints and fixes files
+```
+npm lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cn.vitejs.dev/config/).
